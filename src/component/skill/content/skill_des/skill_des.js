@@ -4,7 +4,7 @@ import axios from 'axios';
 class skill_des extends Component {
     state = {skills:[]}
     componentDidMount(){
-        axios.get('http://localhost:3022/skill')
+        axios.get(window.location.origin+'/skill')
         .then(res => this.setState({skills:res.data}))
     }
     render() {

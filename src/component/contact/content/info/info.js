@@ -4,7 +4,7 @@ import axios from 'axios';
 class info extends Component {
     state = {infos:[]}
     componentDidMount(){
-        axios.get('http://localhost:3022/info')
+        axios.get(window.location.origin+'/info')
         .then(res => this.setState({infos:res.data}))
     }
     render() {

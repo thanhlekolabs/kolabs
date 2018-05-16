@@ -6,7 +6,7 @@ class working_des extends Component {
 		work:[]
 	}
 	componentDidMount(){
-		axios.get('http://localhost:3022/working')
+		axios.get(window.location.origin+'/working')
 		.then(res => this.setState({work:res.data}))
 	}
     render() {

@@ -32,7 +32,7 @@ class content extends Component {
         show: false,
     }
     componentDidMount(){
-        axios.get('http://localhost:3022/feedback')
+        axios.get(window.location.origin+'/feedback')
         .then(res => this.setState({feedbacks:res.data}))
     }
     componentWillMount() {

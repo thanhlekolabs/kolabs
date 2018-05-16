@@ -16,9 +16,9 @@ class card extends Component {
         } 
     }
     componentDidMount(){
-        axios.get('http://localhost:3022/career')
+        axios.get(window.location.origin+'/career')
         .then(res => this.setState({careers:res.data}))
-        axios.get('http://localhost:3022/career/dialog')
+        axios.get(window.location.origin+'/career/dialog')
         .then(res => this.setState({dialogs:res.data}))
     }
     openModal(id) {

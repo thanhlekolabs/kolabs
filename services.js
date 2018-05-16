@@ -3,7 +3,15 @@ const express = require('express'),
 	port = 3022,
 	router = express.Router(),
 	bodyParser = require('body-parser'),
-	path = require('path');
+	path = require('path'),
+	compress = require('compression');
+app.use(compress({
+    threshold: 0, //or whatever you want the lower threshold to be
+    filter: function(req, res) {
+        var ct = res.get('content-type')
+        return true
+    }
+}));
 router.get('/', function(req,res,next){
 	res.render('index')
 })

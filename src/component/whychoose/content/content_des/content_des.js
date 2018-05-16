@@ -10,7 +10,7 @@ class content_des extends Component {
         }
       }
     componentDidMount(){
-        axios.get('http://localhost:3022/choose')
+        axios.get(window.location.origin+'/choose')
         .then(res => this.setState({chooses:res.data}))
     }
     handleChoose = (id) =>{
