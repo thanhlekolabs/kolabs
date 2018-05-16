@@ -4,7 +4,7 @@ import axios from 'axios';
 class content extends Component {
     state = {cards:[]} 
     componentDidMount(){
-        axios.get('http://localhost:3022/introduce')
+        axios.get(window.location.origin+'/introduce')
         .then(res => this.setState({cards:res.data}))
     }
     render() {

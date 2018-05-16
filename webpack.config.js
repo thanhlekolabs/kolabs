@@ -1,19 +1,16 @@
 const path = require('path')
 const webpack = require('webpack')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 module.exports = {
   performance: {
     hints: false
   }, 
-  entry: {index:'./src/index.js'},
+  entry: {bundle:'./src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'index.bundle.js'
-  },  
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './public',
-    port: 3022
-  },  
+  },
   module: {
     rules: [
       {test: /\.(js|jsx)$/, exclude: /node_modules/, use: ['babel-loader']}
@@ -25,6 +22,13 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery"
     }),
+    new UglifyJsPlugin({
+      sourceMap: true,
+      uglifyOptions: {
+        minimize:true,
+      }
+    }),
+
   ],
   mode:'production'
 }

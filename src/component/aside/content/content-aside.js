@@ -11,7 +11,7 @@ class content extends Component {
         }
       }
     componentDidMount(){
-        axios.get('http://localhost:3022/aside')
+        axios.get(window.location.origin+'/aside')
         .then(res => this.setState({asides:res.data}))
     }
     pressItem(target){

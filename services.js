@@ -3,7 +3,15 @@ const express = require('express'),
 	port = 3022,
 	router = express.Router(),
 	bodyParser = require('body-parser'),
-	path = require('path');
+	path = require('path'),
+	compress = require('compression');
+app.use(compress({
+    threshold: 0, //or whatever you want the lower threshold to be
+    filter: function(req, res) {
+        var ct = res.get('content-type')
+        return true
+    }
+}));
 router.get('/', function(req,res,next){
 	res.render('index')
 })
@@ -247,11 +255,18 @@ router.get('/career/dialog', function (req, res, next) {
 		},
 	])
 })
+router.get('*', function(req, res, next) {
+	if(res.status != 200)
+	{
+		res.redirect('/')
+	}
+  });
 app.use(function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
+
 app.use(bodyParser.json());
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs');
