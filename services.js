@@ -250,7 +250,7 @@ router.get('/career/dialog', function (req, res, next) {
 router.get('*', function(req, res, next) {
 	if(res.status != 200)
 	{
-		res.render('index')
+		res.redirect('/')
 	}
   });
 app.use(function (req, res, next) {
